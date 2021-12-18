@@ -1,82 +1,130 @@
 [
   {
     "name": "Man City",
-    "group": "A",
+    "group": {
+      "id": "A",
+      "position": 1
+    },
     "country": "UK"
   },
   {
     "name": "PSG",
-    "group": "A",
+    "group": {
+      "id": "A",
+      "position": 2
+    },
     "country": "FR"
   },
   {
     "name": "Liverpool",
-    "group": "B",
+    "group": {
+      "id": "B",
+      "position": 1
+    },
     "country": "UK"
   },
   {
     "name": "Atlético Madrid",
-    "group": "B",
+    "group": {
+      "id": "B",
+      "position": 2
+    },
     "country": "ES"
   },
   {
     "name": "Ajax",
-    "group": "C",
+    "group": {
+      "id": "C",
+      "position": 1
+    },
     "country": "NL"
   },
   {
     "name": "Sporting",
-    "group": "C",
+    "group": {
+      "id": "C",
+      "position": 2
+    },
     "country": "PT"
   },
   {
     "name": "Real Madrid",
-    "group": "D",
+    "group": {
+      "id": "D",
+      "position": 1
+    },
     "country": "ES"
   },
   {
     "name": "Inter",
-    "group": "D",
+    "group": {
+      "id": "D",
+      "position": 2
+    },
     "country": "IT"
   },
   {
     "name": "Bayern",
-    "group": "E",
+    "group": {
+      "id": "E",
+      "position": 1
+    },
     "country": "DE"
   },
   {
     "name": "Benfica",
-    "group": "E",
+    "group": {
+      "id": "E",
+      "position": 2
+    },
     "country": "PT"
   },
   {
     "name": "Man United",
-    "group": "F",
+    "group": {
+      "id": "F",
+      "position": 1
+    },
     "country": "UK"
   },
   {
     "name": "Villareal",
-    "group": "F",
+    "group": {
+      "id": "F",
+      "position": 2
+    },
     "country": "ES"
   },
   {
     "name": "LOSC Lille",
-    "group": "G",
+    "group": {
+      "id": "G",
+      "position": 1
+    },
     "country": "FR"
   },
   {
     "name": "RB Salzburg",
-    "group": "G",
+    "group": {
+      "id": "G",
+      "position": 2
+    },
     "country": "DE"
   },
   {
     "name": "Juventus",
-    "group": "H",
+    "group": {
+      "id": "H",
+      "position": 1
+    },
     "country": "IT"
   },
   {
     "name": "Chelsea",
-    "group": "H",
+    "group": {
+      "id": "H",
+      "position": 2
+    },
     "country": "UK"
   }
 ]
