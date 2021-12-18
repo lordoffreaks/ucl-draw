@@ -3,63 +3,55 @@ import { Team } from "./models";
 import teams from "./teams.json";
 
 describe("Find valid rivals", () => {
-  it("works", () => {
+  it("valid rivals can not be from the same country, from the same group and for position 1 can only be paired with position 2", () => {
     expect(findValidRivals(teams[0] as Team, teams as Team[])).toEqual([
       {
         name: "Atlético Madrid",
-        group: "B",
+        group: {
+          id: "B",
+          position: 2,
+        },
         country: "ES",
-      },
-      {
-        name: "Ajax",
-        group: "C",
-        country: "NL",
       },
       {
         name: "Sporting",
-        group: "C",
+        group: {
+          id: "C",
+          position: 2,
+        },
         country: "PT",
-      },
-      {
-        name: "Real Madrid",
-        group: "D",
-        country: "ES",
       },
       {
         name: "Inter",
-        group: "D",
+        group: {
+          id: "D",
+          position: 2,
+        },
         country: "IT",
-      },
-      {
-        name: "Bayern",
-        group: "E",
-        country: "DE",
       },
       {
         name: "Benfica",
-        group: "E",
+        group: {
+          id: "E",
+          position: 2,
+        },
         country: "PT",
       },
-
       {
         name: "Villareal",
-        group: "F",
+        group: {
+          id: "F",
+          position: 2,
+        },
         country: "ES",
       },
       {
-        name: "LOSC Lille",
-        group: "G",
-        country: "FR",
-      },
-      {
         name: "RB Salzburg",
-        group: "G",
+        group: {
+          id: "G",
+          position: 2,
+        },
         country: "DE",
-      },
-      {
-        name: "Juventus",
-        group: "H",
-        country: "IT",
       },
     ]);
   });
