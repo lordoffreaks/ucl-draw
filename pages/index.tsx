@@ -1,21 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import { findValidRivals } from "../draw";
 import { Team } from "../models";
+import { LastSixteenPlugin } from "../plugins/draw/sixteen";
 import styles from "../styles/Home.module.css";
-import teams from "../teams.json";
-
-function shuffle<T>(data: T[]) {
-  return data
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
-}
+import teams from "../teams/last-sixteen.json";
+import { shuffle } from "../utils";
 
 const Home: NextPage = () => {
   const [activeTeam, setActiveTeam] = useState<Team>();
   const [parings, setParings] = useState<[Team, Team | undefined][]>([]);
+  const { findValidRivals } = LastSixteenPlugin();
 
   const filterOutParied = ({ name }: Team) => {
     if (!parings.length) {
@@ -25,9 +20,17 @@ const Home: NextPage = () => {
       return a.name === name || b?.name === name;
     });
   };
+
+  const alreadyPaired = (teams as Team[]).filter(filterOutParied);
+  const rivals = activeTeam
+    ? findValidRivals(activeTeam, alreadyPaired)
+    : alreadyPaired;
+
   const drawOne = () => {
     if (!activeTeam) {
-      const ts = (teams as Team[]).filter(filterOutParied);
+      const ts = (teams as Team[])
+        .filter(filterOutParied)
+        .sort((a, b) => a.group.position - b.group.position);
       const team = shuffle(ts)[0];
       parings.push([team, undefined]);
       setParings(parings);
@@ -55,13 +58,30 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <ul>
-          {teams.map(({ name, country }) => (
-            <li key={name}>
-              {name} | {country}
-            </li>
-          ))}
-        </ul>
+        <section className={styles.teamsWrapper}>
+          <article>
+            <h2>All teams</h2>
+            <ul>
+              {teams.map(({ name, country }) => (
+                <li key={name}>
+                  {name} | {country}
+                </li>
+              ))}
+            </ul>
+          </article>
+          <article>
+            <h2>{activeTeam ? "Possile rivals" : "Remaining teams"}</h2>
+
+            <ul>
+              {rivals.map(({ name, country }) => (
+                <li key={name}>
+                  {name} | {country}
+                </li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
         <ul>
           {parings.map(([a, b], index) => {
             return (

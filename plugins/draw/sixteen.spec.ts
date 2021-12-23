@@ -1,8 +1,9 @@
-import { findValidRivals } from "./draw";
-import { Team } from "./models";
-import teams from "./teams.json";
+import { LastSixteenPlugin } from "./sixteen";
+import { Team } from "../../models";
+import teams from "../../teams/last-sixteen.json";
 
-describe("Find valid rivals", () => {
+describe("Last sixten", () => {
+  const { findValidRivals } = LastSixteenPlugin();
   it("valid rivals can not be from the same country, from the same group and for position 1 can only be paired with position 2", () => {
     expect(findValidRivals(teams[0] as Team, teams as Team[])).toEqual([
       {
